@@ -7,6 +7,7 @@ lsp = require('lsp-zero')
 require('lspconfig').r_language_server.setup({})
 require('lspconfig').bashls.setup({})
 require('lspconfig').lua_ls.setup({})
+require('lspconfig').pyright.setup({})
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
