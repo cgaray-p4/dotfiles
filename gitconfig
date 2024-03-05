@@ -28,3 +28,6 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[user]
+	email = cgaray@paradigm4.com
+	name = Christopher Garay
