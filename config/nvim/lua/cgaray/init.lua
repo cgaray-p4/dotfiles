@@ -1,1 +1,2 @@
-require("cgaray/remap")
+require("cgaray.remap")
+require("cgaray.set")
