@@ -74,10 +74,14 @@ return require('packer').startup(function(use)
     use 'christoomey/vim-tmux-navigator'
 
     use({
-    "kdheepak/lazygit.nvim",
-    -- optional for floating window border decoration
-    requires = {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
         "nvim-lua/plenary.nvim",
     },
+
+    use 'lewis6991/gitsigns.nvim'
+
+    use 'tpope/vim-fugitive'
 })
 end)
