@@ -65,6 +65,7 @@ return {
         "shfmt",
         "flake8",
         "typescript-language-server",
+        "markdownlint",
       },
     },
   },
