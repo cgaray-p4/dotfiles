@@ -25,3 +25,5 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
+[submodule]
+	recurse = true
