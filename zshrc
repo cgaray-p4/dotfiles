@@ -1,44 +1,47 @@
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-# extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
-# these are loaded first, second, and third, respectively.
-_load_settings() {
-  _dir="$1"
-  if [ -d "$_dir" ]; then
-    if [ -d "$_dir/pre" ]; then
-      for config in "$_dir"/pre/**/*~*.zwc(N-.); do
-        . $config
-      done
-    fi
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
 
-    for config in "$_dir"/**/*(N-.); do
-      case "$config" in
-        "$_dir"/(pre|post)/*|*.zwc)
-          :
-          ;;
-        *)
-          . $config
-          ;;
-      esac
-    done
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-    if [ -d "$_dir/post" ]; then
-      for config in "$_dir"/post/**/*~*.zwc(N-.); do
-        . $config
-      done
-    fi
-  fi
-}
-_load_settings "$HOME/.zsh/configs"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR='nvim'
 
 alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 alias nvim-kick="NVIM_APPNAME=kickstart nvim"
@@ -57,5 +60,8 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 
+# Local config
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
