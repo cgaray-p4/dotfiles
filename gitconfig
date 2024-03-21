@@ -15,8 +15,6 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-[merge]
-  ff = only
 [fetch]
   prune = true
 [rebase]
