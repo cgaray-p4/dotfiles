@@ -60,6 +60,8 @@ function nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 
+export PATH=$PATH:$HOME/.local/bin
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
