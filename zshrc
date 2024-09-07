@@ -43,27 +43,31 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
 
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-alias nvim-chad="NVIM_APPNAME=NvChad nvim"
-alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
-
-function nvims() {
-  items=("default" "kickstart" "LazyVim" "NvChad" "AstroNvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
-
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/cgaray/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/cgaray/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/cgaray/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/cgaray/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/cgaray/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/cgaray/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
